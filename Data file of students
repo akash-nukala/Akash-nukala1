@@ -1,0 +1,23 @@
+#include<stdio.h>
+
+int main()
+
+FILE *fp1. *fp2;
+
+char name[20]:
+
+int no,ml.m2.m3.m4m5.i.n; float per,total; printf("Enter number of student records: "); scanf("%d",&n); fp1=fopen("studata.txt","w"); //File "studata.txt" opened in write mode for(i=1;i<=n;i++)
+
+1
+
+printf("Enter Regd. Number, Name, Five Subject Marks of Student%d: ",i); //Reading Student data from keyboard scanf("%d%s%d%d%d%d%d",&rno,name,&m1,&m2,&m3,&m4,&m5); Writing Student data to file pointed by fp1 (studata.txt) fprintf(fp1,"%d %s %d %d %d %d %d\n",mo.name.m1.m2.m.3.m4,m5);
+
+fclose(fp1); //Closing file pointed by fp1 (studata.txt) fpl=fopen("studata.txt","r"); //File "studata.txt" opened in read mode fp2-fopen("result.txt","w"); //File "result.txt" opened in write mode for(i=1;i<=n;i++)
+
+//Reading Student data from file pointed by fp1 (studata.txt) fscanf(fp1,"%d %s %d %d %d %d %d",&rno,name,&ml,&m2,&m3.&m4,&m5); total=m1+m2+m3+m4+m5; per-total/5;
+
+//Writing Student data to output screen printf("%d %s %d %d %d %d %d\n",no,name,ml,m2,m3,m4.m5); if(per>40) //Writing Student data with percentage > 40 to file pointed by fp2 (result.txt) fprintf(fp2,"%d %s %d %d %d %d %d\n",rno.name.ml.m2.m3.m4,m5);
+
+fclose(fp1); //Closing file pointed by fp1 (studata.txt) fclose(fp2); //Closing file pointed by fp2 (result.txt) return 0;
+
+1
