@@ -1,0 +1,256 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+int main()
+{
+    struct Node *head = NULL;
+    struct Node *newNode;
+    struct Node *temp;
+    struct Node *prev;
+    int n;
+    int element;
+    int pos;
+    int choice;
+    int i;
+    int found;
+    while (1)
+    {
+        printf("\n\n===== SINGLY LINKED LIST =====\n");
+        printf("1. Creation\n");
+        printf("2. Insertion\n");
+        printf("3. Deletion\n");
+        printf("4. Search\n");
+        printf("5. Display\n");
+        printf("6. Exit\n");
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
+        switch (choice)
+        {
+            case 1:
+                printf("\nEnter number of elements: ");
+                scanf("%d", &n);
+                printf("Enter %d elements separated by spaces: ", n);
+                for (i = 0; i < n; i++)
+                {
+                    scanf("%d", &element);
+                    newNode = (struct Node *)malloc(sizeof(struct Node));
+                    newNode->data = element;
+                    newNode->next = NULL;
+                    if (head == NULL)
+                    {
+                        head = newNode;
+                    }
+                    else
+                    {
+                        temp = head;
+                        while (temp->next != NULL)
+                        {
+                            temp = temp->next;
+                        }
+                        temp->next = newNode;
+                    }
+                }
+                printf("\nCreated Linked List: ");
+                temp = head;
+                while (temp != NULL)
+                {
+                    printf("%d -> ", temp->data);
+                    temp = temp->next;
+                }
+                printf("NULL\n");
+                break;
+            case 2:
+                printf("\nEnter position for insertion: ");
+                scanf("%d", &pos);
+                printf("Enter element to insert: ");
+                scanf("%d", &element);
+                newNode = (struct Node *)malloc(sizeof(struct Node));
+                newNode->data = element;
+                if (pos == 1)
+                {
+                    newNode->next = head;
+                    head = newNode;
+                }
+                else
+                {
+                    temp = head;
+                    for (i = 1; i < pos - 1; i++)
+                    {
+                        temp = temp->next;
+                    }
+                    newNode->next = temp->next;
+                    temp->next = newNode;
+                }
+                printf("\nUpdated Linked List: ");
+                temp = head;
+                while (temp != NULL)
+                {
+                    printf("%d -> ", temp->data);
+                    temp = temp->next;
+                }
+                printf("NULL\n");
+                break;
+            case 3:
+                printf("\nEnter element to delete: ");
+                scanf("%d", &element);
+                temp = head;
+                prev = NULL;
+                found = 0;
+                while (temp != NULL)
+                {
+                    if (temp->data == element)
+                    {
+                        found = 1;
+                        if (prev == NULL)
+                        {
+                            head = temp->next;
+                        }
+                        else
+                        {
+                            prev->next = temp->next;
+                        }
+                        free(temp);
+                        break;
+                    }
+                    prev = temp;
+                    temp = temp->next;
+                }
+                if (found == 1)
+                {
+                    printf("Element deleted successfully.\n");
+                }
+                else
+                {
+                    printf("Element not found.\n");
+                }
+                printf("Updated Linked List: ");
+                temp = head;
+                while (temp != NULL)
+                {
+                    printf("%d -> ", temp->data);
+                    temp = temp->next;
+                }
+                printf("NULL\n");
+                break;
+            case 4:
+                printf("\nEnter element to search: ");
+                scanf("%d", &element);
+                temp = head;
+                found = 0;
+                pos = 1;
+                while (temp != NULL)
+                {
+                    if (temp->data == element)
+                    {
+                        found = 1;
+                        break;
+                    }
+                    temp = temp->next;
+                    pos++;
+                }
+                if (found == 1)
+                {
+                    printf("Element found at position %d.\n", pos);
+                }
+                else
+                {
+                    printf("Element not found.\n");
+                }
+                printf("Current Linked List: ");
+                temp = head;
+                while (temp != NULL)
+                {
+                    printf("%d -> ", temp->data);
+                    temp = temp->next;
+                }
+                printf("NULL\n");
+                break;
+            case 5:
+                printf("\nCurrent Linked List: ");
+                temp = head;
+                while (temp != NULL)
+                {
+                    printf("%d -> ", temp->data);
+                    temp = temp->next;
+                }
+                printf("NULL\n");
+                break;
+            case 6:
+                printf("\nProgram terminated.\n");
+                return 0;
+            default:
+                printf("\nInvalid choice.\n");
+        }
+    }
+    return 0;
+}
+
+After running the program You will get the output as
+OUTPUT
+===== SINGLY LINKED LIST =====
+1. Creation
+2. Insertion
+3. Deletion
+4. Search
+5. Display
+6. Exit
+Enter your choice: 1
+Enter number of elements: 5
+Enter 5 elements separated by spaces: 1 2 3 4 5
+Created Linked List: 1 -> 2 -> 3 -> 4 -> 5 -> NULL
+===== SINGLY LINKED LIST =====
+1. Creation
+2. Insertion
+3. Deletion
+4. Search
+5. Display
+6. Exit
+Enter your choice: 2
+Enter position for insertion: 3
+Enter element to insert: 7
+Updated Linked List: 1 -> 2 -> 7 -> 3 -> 4 -> 5 -> NULL
+===== SINGLY LINKED LIST =====
+1. Creation
+2. Insertion
+3. Deletion
+4. Search
+5. Display
+6. Exit
+Enter your choice: 3
+Enter element to delete: 2
+Element deleted successfully.
+Updated Linked List: 1 -> 7 -> 3 -> 4 -> 5 -> NULL
+===== SINGLY LINKED LIST =====
+1. Creation
+2. Insertion
+3. Deletion
+4. Search
+5. Display
+6. Exit
+Enter your choice: 4
+Enter element to search: 5
+Element found at position 5.
+Current Linked List: 1 -> 7 -> 3 -> 4 -> 5 -> NULL
+===== SINGLY LINKED LIST =====
+1. Creation
+2. Insertion
+3. Deletion
+4. Search
+5. Display
+6. Exit
+Enter your choice: 5
+Current Linked List: 1 -> 7 -> 3 -> 4 -> 5 -> NULL
+===== SINGLY LINKED LIST =====
+1. Creation
+2. Insertion
+3. Deletion
+4. Search
+5. Display
+6. Exit
+Enter your choice: 6
+Program terminated.
+=== Code Execution Successful ===
